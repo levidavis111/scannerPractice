@@ -21,6 +21,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    private let processor = ScaledElementProcessor()
     
 //    MARK: - UI Elements
     
@@ -61,6 +62,7 @@ class ViewController: UIViewController {
         addSubviews()
         constrainSubviews()
         addObservers()
+        processText()
     }
     
 //    MARK: - Touch handling to dismiss keyboard
@@ -109,6 +111,12 @@ class ViewController: UIViewController {
     }
     
 //    MARK: - Private Methods
+    
+    private func processText() {
+        processor.process(in: imageView) {[weak self] text in
+            self?.scannedText = text
+        }
+    }
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
