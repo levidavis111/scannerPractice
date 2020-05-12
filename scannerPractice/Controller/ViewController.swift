@@ -210,7 +210,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
+            let fixedImage = pickedImage.fixOrientation()
+            imageView.image = fixedImage
             drawFeatures(in: imageView)
         }
         dismiss(animated: true, completion: nil)

@@ -34,7 +34,7 @@ class ScaledElementProcessor {
                     return
             }
             var scaledElements: [ScaledElement] = []
-            
+
             for block in result.blocks {
                 for line in block.lines {
                     for element in line.elements {
