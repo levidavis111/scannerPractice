@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		572FFCC1C4BA4172AD1CE3B6 /* libPods-scannerPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C571D63E9D7D2CC78161214B /* libPods-scannerPractice.a */; };
 		FC84576D246B25CF00125528 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC84576C246B25CF00125528 /* GoogleService-Info.plist */; };
+		FC845771246B401300125528 /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC845770246B401300125528 /* ScaledElementProcessor.swift */; };
 		FCF4F0C3246B02860039F8DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C2246B02860039F8DB /* AppDelegate.swift */; };
 		FCF4F0C5246B02860039F8DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */; };
 		FCF4F0C7246B02860039F8DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C6246B02860039F8DB /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		C571D63E9D7D2CC78161214B /* libPods-scannerPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scannerPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F703ED36E3B794121754C398 /* Pods-scannerPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannerPractice.release.xcconfig"; path = "Target Support Files/Pods-scannerPractice/Pods-scannerPractice.release.xcconfig"; sourceTree = "<group>"; };
 		FC84576C246B25CF00125528 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC845770246B401300125528 /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
 		FCF4F0BF246B02860039F8DB /* scannerPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scannerPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF4F0C2246B02860039F8DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC84576E246B3FCC00125528 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCF4F0C2246B02860039F8DB /* AppDelegate.swift */,
+				FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */,
+				FCF4F0CB246B028C0039F8DB /* Assets.xcassets */,
+				FCF4F0CD246B028C0039F8DB /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC84576F246B3FF200125528 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FCF4F0D7246B04F60039F8DB /* +UIImage.swift */,
+				FC845770246B401300125528 /* ScaledElementProcessor.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FCF4F0B6246B02860039F8DB = {
 			isa = PBXGroup;
 			children = (
@@ -83,11 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				FCF4F0D6246B042F0039F8DB /* Controller */,
-				FCF4F0C2246B02860039F8DB /* AppDelegate.swift */,
-				FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */,
-				FCF4F0CB246B028C0039F8DB /* Assets.xcassets */,
-				FCF4F0CD246B028C0039F8DB /* LaunchScreen.storyboard */,
-				FCF4F0D7246B04F60039F8DB /* +UIImage.swift */,
+				FC84576E246B3FCC00125528 /* Supporting Files */,
+				FC84576F246B3FF200125528 /* Utilities */,
 				FCF4F0D0246B028C0039F8DB /* Info.plist */,
 				FC84576C246B25CF00125528 /* GoogleService-Info.plist */,
 			);
@@ -219,6 +238,7 @@
 			files = (
 				FCF4F0C7246B02860039F8DB /* ViewController.swift in Sources */,
 				FCF4F0D8246B04F60039F8DB /* +UIImage.swift in Sources */,
+				FC845771246B401300125528 /* ScaledElementProcessor.swift in Sources */,
 				FCF4F0C3246B02860039F8DB /* AppDelegate.swift in Sources */,
 				FCF4F0C5246B02860039F8DB /* SceneDelegate.swift in Sources */,
 			);
