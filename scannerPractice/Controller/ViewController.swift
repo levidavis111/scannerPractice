@@ -11,6 +11,8 @@ import MobileCoreServices
 
 class ViewController: UIViewController {
     
+//    MARK: - Instance Variable
+    
     private var frameSublayer = CALayer()
     var scannedText: String = "Detected text can be edited here." {
         didSet {
@@ -19,6 +21,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+//    MARK: - UI Elements
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -38,15 +42,19 @@ class ViewController: UIViewController {
     lazy var cameraButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "camera-icon"), for: .normal)
+        button.addTarget(self, action: #selector(cameraButtonPressed), for: .touchUpInside)
         return button
     }()
     
     lazy var takeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "menu-icon"), for: .normal)
+        button.addTarget(self, action: #selector(libraryButtonPressed), for: .touchUpInside)
         return button
     }()
 
+//    MARK: - Lifcycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
@@ -55,13 +63,52 @@ class ViewController: UIViewController {
         addObservers()
     }
     
-    @objc private func navButtonPressed() {}
-    
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        
+//    MARK: - Touch handling to dismiss keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let evt = event, let tchs = evt.touches(for: view), tchs.count > 0 {
+            textView.resignFirstResponder()
+        }
     }
     
-    @objc private func keyboardWillHide(notification: NSNotification) {}
+//    MARK: - Obj-C Methods
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyBoardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyBoardSize.height
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if let keyBoardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y != 0 {
+                view.frame.origin.y += keyBoardSize.height
+            }
+        }
+    }
+    
+    @objc private func cameraButtonPressed() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            presentImagePickerController(withSourceType: .camera)
+        } else {
+            let alert = UIAlertController(title: "Camera Not Available", message: "A camera is not available. Please try picking an image from the image library instead.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc private func libraryButtonPressed() {
+        presentImagePickerController(withSourceType: .photoLibrary)
+    }
+    
+    @objc private func shareButtonPressed() {
+        guard imageView.image != nil else {return}
+        let vc = UIActivityViewController(activityItems: [scannedText, imageView.image!], applicationActivities: [])
+        present(vc, animated: true, completion: nil)
+    }
+    
+//    MARK: - Private Methods
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -70,7 +117,7 @@ class ViewController: UIViewController {
 
     private func setNavBar() {
         self.navigationController?.title = "Extractor"
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(navButtonPressed))
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonPressed))
         self.navigationItem.rightBarButtonItem = rightButton
         
     }
@@ -123,3 +170,21 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
+    
+    private func presentImagePickerController(withSourceType sourceType: UIImagePickerController.SourceType) {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        controller.sourceType = sourceType
+        controller.mediaTypes = [String(kUTTypeImage), String(kUTTypeMovie)]
+        present(controller, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
