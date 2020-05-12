@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "scanned-text")
         return imageView
     }()
@@ -113,9 +114,7 @@ class ViewController: UIViewController {
 //    MARK: - Private Methods
     
     private func processText() {
-        processor.process(in: imageView) {[weak self] text in
-            self?.scannedText = text
-        }
+        drawFeatures(in: imageView)
     }
     
     private func addObservers() {
@@ -129,6 +128,26 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
         
     }
+    
+    private func removeFrames() {
+        guard let sublayers = frameSublayer.sublayers else {return}
+        for sublayer in sublayers {
+            sublayer.removeFromSuperlayer()
+        }
+    }
+    
+    private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
+        removeFrames()
+        processor.process(in: imageView) {[weak self] (text, elements) in
+            elements.forEach{[weak self] element in
+                self?.frameSublayer.addSublayer(element.shapeLayer)
+            }
+            self?.scannedText = text
+            completion?()
+        }
+    }
+    
+//    MARK: - Constraint UI Elements
     
     private func addSubviews() {
         view.addSubview(imageView)
@@ -165,15 +184,15 @@ class ViewController: UIViewController {
     private func constrainCameraButton() {
         cameraButton.translatesAutoresizingMaskIntoConstraints = false
         [cameraButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 100),
-         cameraButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-         cameraButton.heightAnchor.constraint(equalToConstant: 50)].forEach{$0.isActive = true}
+         cameraButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+         cameraButton.heightAnchor.constraint(equalToConstant: 40)].forEach{$0.isActive = true}
     }
     
     private func constrainTakeButton() {
         takeButton.translatesAutoresizingMaskIntoConstraints = false
         [takeButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: -100),
-         takeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-         takeButton.heightAnchor.constraint(equalToConstant: 50)].forEach{$0.isActive = true}
+         takeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+         takeButton.heightAnchor.constraint(equalToConstant: 40)].forEach{$0.isActive = true}
     }
 
 }
@@ -192,6 +211,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
             imageView.image = pickedImage
+            drawFeatures(in: imageView)
         }
         dismiss(animated: true, completion: nil)
     }
