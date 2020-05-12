@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ViewController: UIViewController {
+    
+    private var frameSublayer = CALayer()
+    var scannedText: String = "Detected text can be edited here." {
+        didSet {
+            DispatchQueue.main.async {[weak self] in
+                self?.textView.text = self?.scannedText
+            }
+        }
+    }
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "scanned-text")
-        
         return imageView
     }()
     
@@ -43,9 +52,21 @@ class ViewController: UIViewController {
         setNavBar()
         addSubviews()
         constrainSubviews()
+        addObservers()
     }
     
     @objc private func navButtonPressed() {}
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {}
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 
     private func setNavBar() {
         self.navigationController?.title = "Extractor"
@@ -75,6 +96,7 @@ class ViewController: UIViewController {
          imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
          imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
          imageView.heightAnchor.constraint(equalToConstant: view.safeAreaLayoutGuide.layoutFrame.height * 0.6)].forEach{$0.isActive = true}
+        imageView.layer.addSublayer(frameSublayer)
     }
     
     private func constrainTextView() {
