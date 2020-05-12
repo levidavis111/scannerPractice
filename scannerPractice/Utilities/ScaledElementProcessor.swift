@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 struct ScaledElement {
-    let framd: CGRect
+    let frame: CGRect
     let shapeLayer: CALayer
 }
 
@@ -22,19 +22,29 @@ class ScaledElementProcessor {
         textRecognizer = vision.onDeviceTextRecognizer()
     }
     
-    func process(in imgageView: UIImageView, callback: @escaping (_ text: String) -> ()) {
-        guard let image = imgageView.image else {return}
-        
+    func process(in imageView: UIImageView, callback: @escaping (_ text: String, _ scaledElements: [ScaledElement]) -> ()) {
+        guard let image = imageView.image else {return}
         let visionImage = VisionImage(image: image)
         
         textRecognizer.process(visionImage) { (result, error) in
             guard error == nil,
             let result = result,
                 !result.text.isEmpty else {
-                    callback("")
+                    callback("", [])
                     return
             }
-            callback(result.text)
+            var scaledElements: [ScaledElement] = []
+            
+            for block in result.blocks {
+                for line in block.lines {
+                    for element in line.elements {
+                        let shapeLayer = self.createShapeLayer(frame: element.frame)
+                        let scaledElement = ScaledElement(frame: element.frame, shapeLayer: shapeLayer)
+                        scaledElements.append(scaledElement)
+                    }
+                }
+            }
+            callback(result.text, scaledElements)
         }
     }
     
