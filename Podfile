@@ -9,8 +9,8 @@ target 'scannerPractice' do
 
   # Firebase
 
-	pod 'Firebase/Core' => '5.5.0'
-	pod 'Firebase/MLVision' => '5.5.0'
-	pod 'Firebase/MLVisionTextModel' => '5.5.0'
+	pod 'Firebase/Core'
+	pod 'Firebase/MLVision'
+	pod 'Firebase/MLVisionTextModel'
 
 end

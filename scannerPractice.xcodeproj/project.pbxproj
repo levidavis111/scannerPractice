@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		86F3DED32D8912C4DFB64439 /* libPods-scannerPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D6A91112223E41F1DB7DA2 /* libPods-scannerPractice.a */; };
+		572FFCC1C4BA4172AD1CE3B6 /* libPods-scannerPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C571D63E9D7D2CC78161214B /* libPods-scannerPractice.a */; };
+		FC84576D246B25CF00125528 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC84576C246B25CF00125528 /* GoogleService-Info.plist */; };
 		FCF4F0C3246B02860039F8DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C2246B02860039F8DB /* AppDelegate.swift */; };
 		FCF4F0C5246B02860039F8DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */; };
 		FCF4F0C7246B02860039F8DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0C6246B02860039F8DB /* ViewController.swift */; };
@@ -17,9 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49F36B11A814E906DE73027F /* Pods-scannerPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannerPractice.release.xcconfig"; path = "Target Support Files/Pods-scannerPractice/Pods-scannerPractice.release.xcconfig"; sourceTree = "<group>"; };
-		B2D6A91112223E41F1DB7DA2 /* libPods-scannerPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scannerPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3A3E00FB83DC4F83D77B45A /* Pods-scannerPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannerPractice.debug.xcconfig"; path = "Target Support Files/Pods-scannerPractice/Pods-scannerPractice.debug.xcconfig"; sourceTree = "<group>"; };
+		AAE844845D25B62DF4C31375 /* Pods-scannerPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannerPractice.debug.xcconfig"; path = "Target Support Files/Pods-scannerPractice/Pods-scannerPractice.debug.xcconfig"; sourceTree = "<group>"; };
+		C571D63E9D7D2CC78161214B /* libPods-scannerPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scannerPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F703ED36E3B794121754C398 /* Pods-scannerPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannerPractice.release.xcconfig"; path = "Target Support Files/Pods-scannerPractice/Pods-scannerPractice.release.xcconfig"; sourceTree = "<group>"; };
+		FC84576C246B25CF00125528 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCF4F0BF246B02860039F8DB /* scannerPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scannerPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF4F0C2246B02860039F8DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCF4F0C4246B02860039F8DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86F3DED32D8912C4DFB64439 /* libPods-scannerPractice.a in Frameworks */,
+				572FFCC1C4BA4172AD1CE3B6 /* libPods-scannerPractice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,16 +47,16 @@
 		7206C68F37D6CF04F92768B1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E3A3E00FB83DC4F83D77B45A /* Pods-scannerPractice.debug.xcconfig */,
-				49F36B11A814E906DE73027F /* Pods-scannerPractice.release.xcconfig */,
+				AAE844845D25B62DF4C31375 /* Pods-scannerPractice.debug.xcconfig */,
+				F703ED36E3B794121754C398 /* Pods-scannerPractice.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A1A857FB4B19FA4EEC4B01FA /* Frameworks */ = {
+		D34F65F78512CD956417556B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B2D6A91112223E41F1DB7DA2 /* libPods-scannerPractice.a */,
+				C571D63E9D7D2CC78161214B /* libPods-scannerPractice.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -65,7 +67,7 @@
 				FCF4F0C1246B02860039F8DB /* scannerPractice */,
 				FCF4F0C0246B02860039F8DB /* Products */,
 				7206C68F37D6CF04F92768B1 /* Pods */,
-				A1A857FB4B19FA4EEC4B01FA /* Frameworks */,
+				D34F65F78512CD956417556B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +89,7 @@
 				FCF4F0CD246B028C0039F8DB /* LaunchScreen.storyboard */,
 				FCF4F0D7246B04F60039F8DB /* +UIImage.swift */,
 				FCF4F0D0246B028C0039F8DB /* Info.plist */,
+				FC84576C246B25CF00125528 /* GoogleService-Info.plist */,
 			);
 			path = scannerPractice;
 			sourceTree = "<group>";
@@ -106,11 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCF4F0D3246B028C0039F8DB /* Build configuration list for PBXNativeTarget "scannerPractice" */;
 			buildPhases = (
-				A9863AE9217BB77E8AC5AF0E /* [CP] Check Pods Manifest.lock */,
+				3B118DE8018CA89543339B76 /* [CP] Check Pods Manifest.lock */,
 				FCF4F0BB246B02860039F8DB /* Sources */,
 				FCF4F0BC246B02860039F8DB /* Frameworks */,
 				FCF4F0BD246B02860039F8DB /* Resources */,
-				790ABB33CB73BFE107597627 /* [CP] Copy Pods Resources */,
+				6480ADB413AF4ACCEBD62AEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,30 +164,14 @@
 			files = (
 				FCF4F0CF246B028C0039F8DB /* LaunchScreen.storyboard in Resources */,
 				FCF4F0CC246B028C0039F8DB /* Assets.xcassets in Resources */,
+				FC84576D246B25CF00125528 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		790ABB33CB73BFE107597627 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A9863AE9217BB77E8AC5AF0E /* [CP] Check Pods Manifest.lock */ = {
+		3B118DE8018CA89543339B76 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,6 +191,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6480ADB413AF4ACCEBD62AEC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-scannerPractice/Pods-scannerPractice-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -350,11 +354,12 @@
 		};
 		FCF4F0D4246B028C0039F8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3A3E00FB83DC4F83D77B45A /* Pods-scannerPractice.debug.xcconfig */;
+			baseConfigurationReference = AAE844845D25B62DF4C31375 /* Pods-scannerPractice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = scannerPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,11 +373,12 @@
 		};
 		FCF4F0D5246B028C0039F8DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49F36B11A814E906DE73027F /* Pods-scannerPractice.release.xcconfig */;
+			baseConfigurationReference = F703ED36E3B794121754C398 /* Pods-scannerPractice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = scannerPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

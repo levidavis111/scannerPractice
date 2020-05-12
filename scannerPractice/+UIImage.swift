@@ -56,6 +56,8 @@ extension UIImage {
       transform = transform.rotated(by: -0.5*CGFloat.pi)
     case .up, .upMirrored:
       break
+    @unknown default:
+        print("Unknown error")
     }
     
     // Now we draw the underlying CGImage into a new context, applying the transform
