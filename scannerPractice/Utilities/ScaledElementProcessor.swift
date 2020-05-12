@@ -9,6 +9,11 @@
 import Foundation
 import Firebase
 
+struct ScaledElement {
+    let framd: CGRect
+    let shapeLayer: CALayer
+}
+
 class ScaledElementProcessor {
     let vision = Vision.vision()
     var textRecognizer: VisionTextRecognizer
@@ -32,4 +37,23 @@ class ScaledElementProcessor {
             callback(result.text)
         }
     }
+    
+    func createShapeLayer(frame: CGRect) -> CAShapeLayer {
+        let bPath = UIBezierPath(rect: frame)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = bPath.cgPath
+        
+        shapeLayer.strokeColor = Constants.lineColor
+        shapeLayer.fillColor = Constants.fillColor
+        shapeLayer.lineWidth = Constants.lineWidth
+        
+        return shapeLayer
+    }
+    
+    private enum Constants {
+        static let lineWidth: CGFloat = 3.0
+        static let lineColor = UIColor.yellow.cgColor
+        static let fillColor = UIColor.clear.cgColor
+    }
+    
 }
