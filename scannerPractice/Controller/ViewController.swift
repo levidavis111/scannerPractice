@@ -11,7 +11,9 @@ import MobileCoreServices
 
 class ViewController: UIViewController {
     
-//    MARK: - Instance Variable
+//    MARK: - Instance Variables
+//   Insace of the image/text detector
+    private let processor = ScaledElementProcessor()
     
     private var frameSublayer = CALayer()
     var scannedText: String = "Detected text can be edited here." {
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    private let processor = ScaledElementProcessor()
+    
     
 //    MARK: - UI Elements
     
@@ -36,6 +38,7 @@ class ViewController: UIViewController {
         let textView = UITextView()
         textView.text = "Detected text can be edited here."
         textView.font = UIFont(name: "Futura-Medium", size: 17)
+//        Editiable so user can fix mistakes from the scan.
         textView.isEditable = true
         textView.isSelectable = true
         return textView
@@ -106,6 +109,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func shareButtonPressed() {
+//        Adds image and text to an ActivityVC so the user can share it
         guard imageView.image != nil else {return}
         let vc = UIActivityViewController(activityItems: [scannedText, imageView.image!], applicationActivities: [])
         present(vc, animated: true, completion: nil)
@@ -138,8 +142,10 @@ class ViewController: UIViewController {
     
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
+//        Passes the main imageView and assigns the recognized text to the scannedText property in the callback.
         processor.process(in: imageView) {[weak self] (text, elements) in
             elements.forEach{[weak self] element in
+//          Add each element’s shape layer to the sublayer, so that iOS will automatically draw the shape on the image.
                 self?.frameSublayer.addSublayer(element.shapeLayer)
             }
             self?.scannedText = text
@@ -210,6 +216,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
+//            Fixes image orientation, if it needs it
             let fixedImage = pickedImage.fixOrientation()
             imageView.image = fixedImage
             drawFeatures(in: imageView)
